@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aralık 2022</title>
+<style>
+:root{
+  --bg:#f7f7f8;
+  --card:#ffffff;
+  --text:#161616;
+  --muted:#6f6f75;
+  --line:#e6e6ea;
+  --shadow:0 8px 30px rgba(0,0,0,.06);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+a{color:inherit}
+.shell{max-width:1100px;margin:0 auto;padding:24px 16px 56px}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.title{font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-.03em;margin:0}
+.subtitle{color:var(--muted);margin:6px 0 0;font-size:14px}
+.intro{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:18px;
+  margin:0 0 20px 0;
+}
+.intro p{
+  margin:0 0 10px 0;
+  line-height:1.6;
+  color:#2b2b2f;
+}
+.intro p:last-child{
+  margin-bottom:0;
+}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:999px;text-decoration:none;box-shadow:var(--shadow);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.month-card,.year-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);text-decoration:none}
+.month-card h2,.year-card h2{margin:0 0 8px;font-size:20px}
+.count{color:var(--muted);font-size:14px}
+.feed{display:flex;flex-direction:column;gap:18px}
+.post{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+.post-head{padding:16px 18px 8px}
+.date{color:var(--muted);font-size:13px;margin-bottom:10px}
+.caption{white-space:pre-wrap;line-height:1.45;font-size:15px}
+.media-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--line);margin-top:14px}
+.media-grid.multi-2{grid-template-columns:1fr 1fr}
+.media-grid.multi-3{grid-template-columns:repeat(3,1fr)}
+.media-grid img,
+.media-grid video{
+  width:100%;
+  height:auto;
+  display:block;
+  background:#000;
+  object-fit:contain;
+}
+.media-grid video{min-height:240px}
+.footer-space{height:24px}
+@media (max-width:640px){
+  .shell{padding:16px 12px 36px}
+  .post-head{padding:14px 14px 8px}
+  .caption{font-size:14px}
+  .grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div>
+        <h1 class="title">Aralık 2022</h1>
+        <p class="subtitle">İstanbul Trans Onur Haftası</p>
+      </div>
+      <div class="nav"><a class="pill" href="index.html">← Geri</a></div>
+    </div>
+    
+    <div class="feed"><article class="post"><div class="post-head"><div class="date">2022-12-23 06:13:00</div><div class="caption">Denizli’de İranlı göçmen trans bir kadın, bir binanın 7. katından atlayarak intihar etti. Trans intiharları politiktir!</div></div><div class="media-grid"><img src='media/17936521868433908.webp' loading='lazy' alt='Arşiv medyası'></div></article><article class="post"><div class="post-head"><div class="date">2022-12-18 09:46:00</div><div class="caption">Seks işçilerinin hakları insan haklarıdır.
+
+#17aralık #sexworkers</div></div><div class="media-grid"><img src='media/18056855719364868.webp' loading='lazy' alt='Arşiv medyası'></div></article><article class="post"><div class="post-head"><div class="date">2022-12-17 08:32:00</div><div class="caption">Bir önceki toplantıya gelemediysen üzülme, gönüllülerini arayan 9. Trans Onur Haftası, 13 Aralık 19:00'da tekrar toplanıyor. Mekan bilgisi için bize mesaj at 💌</div></div><div class="media-grid"><img src='media/18053435806371021.webp' loading='lazy' alt='Arşiv medyası'></div></article><article class="post"><div class="post-head"><div class="date">2022-12-09 19:18:00</div><div class="caption">#1aralıkdünyaaidsgünü #worldaidsday</div></div><div class="media-grid"><img src='media/17957960102180044.webp' loading='lazy' alt='Arşiv medyası'></div></article><article class="post"><div class="post-head"><div class="date">2022-12-01 06:04:00</div><div class="caption">Buluşmamıza çok az kaldı! Gönüllülerini arayan 9. Trans Onur Haftası, 30 Kasım 19:00'da toplanıyor. Sen de bu bağımsız, kolektif harekete katılmak istiyorsan mekan bilgisi için bize mesaj at 💌</div></div><div class="media-grid"><img src='media/17971904221906944.webp' loading='lazy' alt='Arşiv medyası'></div></article></div>
+    <div class="footer-space"></div>
+  </div>
+</body>
+</html>

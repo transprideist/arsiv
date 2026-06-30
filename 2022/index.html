@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2022</title>
+<style>
+:root{
+  --bg:#f7f7f8;
+  --card:#ffffff;
+  --text:#161616;
+  --muted:#6f6f75;
+  --line:#e6e6ea;
+  --shadow:0 8px 30px rgba(0,0,0,.06);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+a{color:inherit}
+.shell{max-width:1100px;margin:0 auto;padding:24px 16px 56px}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.title{font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-.03em;margin:0}
+.subtitle{color:var(--muted);margin:6px 0 0;font-size:14px}
+.intro{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:18px;
+  margin:0 0 20px 0;
+}
+.intro p{
+  margin:0 0 10px 0;
+  line-height:1.6;
+  color:#2b2b2f;
+}
+.intro p:last-child{
+  margin-bottom:0;
+}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:999px;text-decoration:none;box-shadow:var(--shadow);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.month-card,.year-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);text-decoration:none}
+.month-card h2,.year-card h2{margin:0 0 8px;font-size:20px}
+.count{color:var(--muted);font-size:14px}
+.feed{display:flex;flex-direction:column;gap:18px}
+.post{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+.post-head{padding:16px 18px 8px}
+.date{color:var(--muted);font-size:13px;margin-bottom:10px}
+.caption{white-space:pre-wrap;line-height:1.45;font-size:15px}
+.media-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--line);margin-top:14px}
+.media-grid.multi-2{grid-template-columns:1fr 1fr}
+.media-grid.multi-3{grid-template-columns:repeat(3,1fr)}
+.media-grid img,
+.media-grid video{
+  width:100%;
+  height:auto;
+  display:block;
+  background:#000;
+  object-fit:contain;
+}
+.media-grid video{min-height:240px}
+.footer-space{height:24px}
+@media (max-width:640px){
+  .shell{padding:16px 12px 36px}
+  .post-head{padding:14px 14px 8px}
+  .caption{font-size:14px}
+  .grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div>
+        <h1 class="title">2022</h1>
+        <p class="subtitle">İstanbul Trans Onur Haftası</p>
+      </div>
+      <div class="nav"><a class="pill" href="../index.html">← Geri</a></div>
+    </div>
+    
+    <div class="grid"><a class='month-card' href='December.html'><h2>Aralık</h2><div class='count'>5 gönderi</div></a><a class='month-card' href='November.html'><h2>Kasım</h2><div class='count'>2 gönderi</div></a></div>
+    <div class="footer-space"></div>
+  </div>
+</body>
+</html>
