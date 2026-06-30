@@ -1,7 +1,5 @@
 from pathlib import Path
-from bs4 import BeautifulSoup
-
-DIST = Path(".")
+import re
 
 TR_AY_SIRASI = {
     "Ocak": 1,
@@ -18,46 +16,58 @@ TR_AY_SIRASI = {
     "Aralık": 12,
 }
 
-for year_dir in DIST.iterdir():
-    if not year_dir.is_dir():
-        continue
-    index_file = year_dir / "index.html"
-    if not index_file.exists():
-        continue
+def sort_month_cards(html):
+    pattern = re.compile(r'(<a class="month-card".*?</a>)', re.DOTALL)
+    cards = pattern.findall(html)
 
-    soup = BeautifulSoup(index_file.read_text(encoding="utf-8"), "html.parser")
-    grid = soup.select_one(".grid")
-    if not grid:
-        continue
+    def key(card):
+        m = re.search(r"<h2>(.*?)</h2>", card, re.DOTALL)
+        month = m.group(1).strip() if m else ""
+        return TR_AY_SIRASI.get(month, 99)
 
-    cards = grid.select("a.month-card")
-    cards_sorted = sorted(
-        cards,
-        key=lambda a: TR_AY_SIRASI.get(
-            (a.select_one("h2").get_text(strip=True) if a.select_one("h2") else ""),
-            99
-        )
-    )
+    sorted_cards = sorted(cards, key=key)
 
-    grid.clear()
-    for card in cards_sorted:
-        grid.append(card)
+    if cards:
+        first = cards[0]
+        last = cards[-1]
+        start = html.find(first)
+        end = html.rfind(last) + len(last)
+        html = html[:start] + "".join(sorted_cards) + html[end:]
+    return html
 
-    index_file.write_text(str(soup), encoding="utf-8")
+def sort_year_cards(html):
+    pattern = re.compile(r'(<a class="year-card".*?</a>)', re.DOTALL)
+    cards = pattern.findall(html)
 
-root_index = DIST / "index.html"
+    def key(card):
+        m = re.search(r"<h2>(\d+)</h2>", card, re.DOTALL)
+        year = int(m.group(1)) if m else 9999
+        return year
+
+    sorted_cards = sorted(cards, key=key)
+
+    if cards:
+        first = cards[0]
+        last = cards[-1]
+        start = html.find(first)
+        end = html.rfind(last) + len(last)
+        html = html[:start] + "".join(sorted_cards) + html[end:]
+    return html
+
+dist = Path(".")
+
+for year_dir in dist.iterdir():
+    if year_dir.is_dir():
+        index_file = year_dir / "index.html"
+        if index_file.exists():
+            html = index_file.read_text(encoding="utf-8")
+            html = sort_month_cards(html)
+            index_file.write_text(html, encoding="utf-8")
+
+root_index = dist / "index.html"
 if root_index.exists():
-    soup = BeautifulSoup(root_index.read_text(encoding="utf-8"), "html.parser")
-    grid = soup.select_one(".grid")
-    if grid:
-        cards = grid.select("a.year-card")
-        cards_sorted = sorted(
-            cards,
-            key=lambda a: int(a.select_one("h2").get_text(strip=True))
-        )
-        grid.clear()
-        for card in cards_sorted:
-            grid.append(card)
-        root_index.write_text(str(soup), encoding="utf-8")
+    html = root_index.read_text(encoding="utf-8")
+    html = sort_year_cards(html)
+    root_index.write_text(html, encoding="utf-8")
 
 print("indexler düzeldi")
